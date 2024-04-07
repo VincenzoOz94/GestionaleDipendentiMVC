@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/06/2024 14:22:32" ReportInfo.Modified="04/07/2024 11:33:28" ReportInfo.CreatorVersion="2023.1.7.0">
+  <Styles Name="Green">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Fill.Color="PaleGreen" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Fill.Color="PaleGreen" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="Honeydew" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <XmlDataConnection Name="Connection" ConnectionString="rijcmlqM1kMKRb+nMtaVtgTnkmKas4FHj8waEVfwK0HP1l3CSNWTrIXZ3043f7WBbovz1wkIjdF5g3RuynsfdixByzcK/ygSPieUq3jm96LXD4UnN34G9/ZnrDGHe259c+t7/fLTu67QggaInglLY5CJfL8ng==">
+      <TableDataSource Name="Dipendente" DataType="System.Int32" Enabled="true" TableName="Dipendente">
+        <Column Name="Id" DataType="System.String"/>
+        <Column Name="Nome" DataType="System.String"/>
+        <Column Name="Cognome" DataType="System.String"/>
+        <Column Name="Stipendio" DataType="System.String"/>
+        <Column Name="RuoloId" DataType="System.String"/>
+        <Column Name="Dipendente_Id" DataType="System.Int32"/>
+        <Column Name="Column" Alias="Ruolo" DataType="System.Int32" Calculated="true" Expression=""/>
+      </TableDataSource>
+      <TableDataSource Name="Ruolo" DataType="System.Int32" Enabled="true" TableName="Ruolo">
+        <Column Name="Id" DataType="System.String"/>
+        <Column Name="NomeRuolo" DataType="System.String"/>
+        <Column Name="Dipendente_Id" DataType="System.Int32"/>
+        <Column Name="Column" DataType="System.Int32" Calculated="true" Expression=""/>
+      </TableDataSource>
+    </XmlDataConnection>
+    <Relation Name="Dipendente_Ruolo" ParentDataSource="Dipendente" ChildDataSource="null" ParentColumns="Dipendente_Id" ChildColumns="Dipendente_Id" Enabled="true"/>
+    <Relation Name="Dipendente_Ruolo" ParentDataSource="Ruolo" ChildDataSource="Dipendente" ParentColumns="Id" ChildColumns="RuoloId" Enabled="true"/>
+    <Parameter Name="ruolo" DataType="System.String" AsString=""/>
+    <Parameter Name="CONN" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="Dipendente" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="47.25">
+      <TextObject Name="Text3" Width="179.55" Height="18.9" Fill.Color="PaleGreen" Text="Nome" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text5" Left="179.55" Width="179.55" Height="18.9" Fill.Color="PaleGreen" Text="Cognome" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="359.1" Width="179.55" Height="18.9" Fill.Color="PaleGreen" Text="Stipendio" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text8" Left="548.1" Width="170.1" Height="18.9" Text="Ruolo" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="93.05" Width="718.2" Height="18.9" EvenStyle="EvenRows" DataSource="Dipendente">
+      <TextObject Name="Text2" Width="179.55" Height="18.9" Text="[Dipendente.Nome]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text4" Left="179.55" Width="179.55" Height="18.9" Text="[Dipendente.Cognome]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Left="359.1" Width="179.55" Height="18.9" Text="[Dipendente.Stipendio]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text11" Left="548.1" Width="170.1" Height="18.9" Text="[Dipendente.Ruolo.NomeRuolo]" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="115.95" Width="718.2" Height="18.9">
+      <TextObject Name="Text10" Width="718.2" Height="18.9" Dock="Fill" Fill.Color="PaleGreen" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
